@@ -1,0 +1,39 @@
+@import '~@/assets/less/mixins.less';
+
+.npp-carousel {
+    .radius(0, 0, 2rem, 0);
+    width   : 100%;
+    overflow: hidden;
+
+    .am-carousel-wrap {
+        text-align  : left;
+        padding-left: 1.7rem;
+    }
+
+    .am-carousel-wrap-dot {
+        position: relative;
+        width   : 4rem;
+        height  : 0.4rem;
+        ;
+        margin-right: 0.2rem;
+
+        span {
+            position        : absolute;
+            bottom          : -0.4rem;
+            width           : 100%;
+            height          : 0.2rem;
+            border-radius   : 0.2rem;
+            background-color: rgba(230, 239, 231, 0.6);
+        }
+    }
+
+    .am-carousel-wrap-dot-active>span {
+        background-color: @primary-color;
+    }
+}
+
+.npp-carousel__link {
+    display : block;
+    position: relative;
+    height  : 12rem;
+}

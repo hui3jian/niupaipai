@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
-export default class LoginLayout extends Component {
+
+class Login extends Component {
     render() {
         return(
             <div>
-                login-layout
+                Login
             </div>
         )
     }
 }
 
+
+export default connect()(Login)

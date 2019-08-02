@@ -1,7 +1,25 @@
 @import './mixins';
 
-// 框架
 #root,
 .app {
   height: 100%;
+}
+
+// 自适应图片
+.adaptive-img {
+  display            : inline-block;
+  width              : 100%;
+  height             : 100%;
+  background-size    : cover;
+  background-position: center;
+  background-repeat  : no-repeat;
+}
+
+// 图标
+.icon {
+  width         : 1em;
+  height        : 1em;
+  vertical-align: -0.15em;
+  fill          : currentColor;
+  overflow      : hidden;
 }
