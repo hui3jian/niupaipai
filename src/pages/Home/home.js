@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import $request from '@/utils/request'
 
 import NppCarousel from './components/carousel/npp-carousel';
+import NppList from './components/list/npp-list';
 import './home.less';
 
 class Home extends Component {
 
     state = {
-
+        listData: []
     }
 
     componentDidMount() {
+        this.GET_LIST_DATA();
+    }
 
+    // 获取列表数据
+    GET_LIST_DATA() {
+        $request.post('/creativity/findCreativityByType.jhtml?type=0&pageSize=16&pageNumber=1', {}).then(res => {
+            if (res.success) {
+                const data = res.returnValue.data || []
+                this.setState({
+                    listData: data
+                })
+                console.log(this.state.listData)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     render() {
@@ -91,7 +108,7 @@ class Home extends Component {
                 {/* 即将拍卖 */}
                 <div className="home__vendue">
                     <h4>即将拍卖</h4>
-                    <div class="home__vendue__cont">
+                    <div className="home__vendue__cont">
                         <ul>
                             <li>
                                 <span
@@ -140,7 +157,7 @@ class Home extends Component {
                 {/* 全部商品 */}
                 <div className="home__all">
                     <h4>全部商品</h4>
-
+                    <NppList options={ this.state.listData } />
                 </div>
             </div>
         )
