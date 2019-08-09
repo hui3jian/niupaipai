@@ -13,7 +13,7 @@ export default class NppList extends Component {
             <div className="npp-list">
                 {
                     this.props.options.map((item, key) => (
-                        <div className="npp-list__item">
+                        <div className="npp-list__item" key={key}>
                             <span
                                 className="npp-list__item__cover"
                                 style={{ backgroundImage: `url(${item.indexImage})` }}

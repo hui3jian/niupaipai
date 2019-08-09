@@ -1,0 +1,70 @@
+@import '~@/assets/less/mixins.less';
+
+.footer {
+    display: block;
+    height : 3.3rem;
+
+    ul {
+        position       : fixed;
+        bottom         : 0;
+        left           : 0;
+        right          : 0;
+        width          : 100%;
+        padding        : 0.5rem 1rem 0.2rem;
+        display        : flex;
+        justify-content: space-between;
+        background     : #fff;
+        border-top     : 1px solid #eee;
+    }
+
+    li {
+        display        : flex;
+        flex-direction : column;
+        justify-content: flex-end;
+        position       : relative;
+
+        a {
+            .font(0.7rem, 1.5, #a4bcca);
+            &.active {
+                color: #30b6ef;
+            }
+        }
+    }
+
+    .icon {
+        font-size    : 1.3rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .footer__circle__box {
+        .border-radius(50%);
+        border-top: 1px solid #eee;
+        display   : block;
+        width     : 2.5rem;
+        height    : 2.5rem;
+        background: #fff;
+        position  : absolute;
+        top       : -20px;
+        left      : 50%;
+        transform : translate(-50%, 0);
+    }
+
+    .footer__circle {
+        .border-radius(50%);
+        display    : block;
+        width      : 2rem;
+        height     : 2rem;
+        overflow   : hidden;
+        background : #00d683;
+        line-height: 2rem;
+        position   : absolute;
+        top        : 5px;
+        left       : 50%;
+        transform  : translate(-50%, 0);
+
+        .icon {
+            vertical-align: middle;
+            color         : #fff;
+        }
+    }
+}

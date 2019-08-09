@@ -4,6 +4,8 @@ import $request from '@/utils/request'
 
 import NppCarousel from './components/carousel/npp-carousel';
 import NppList from './components/list/npp-list';
+import NppFooter from '@/components/Footer/footer.js';
+import NppHeader from '@/components/Header/header.js';
 import './home.less';
 
 class Home extends Component {
@@ -12,8 +14,14 @@ class Home extends Component {
         listData: []
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.GET_LIST_DATA();
+    }
+
+    componentWillUnmount() {
+        this.setState = (state, cb) => {
+            return;
+        }
     }
 
     // 获取列表数据
@@ -24,7 +32,6 @@ class Home extends Component {
                 this.setState({
                     listData: data
                 })
-                console.log(this.state.listData)
             }
         }).catch(err => {
             console.log(err)
@@ -35,6 +42,9 @@ class Home extends Component {
         return (
             <div className="home">
 
+                {/* 头部搜索栏 */}
+                <NppHeader className="typevb"></NppHeader>
+
                 {/* 轮播 */}
                 <NppCarousel></NppCarousel>
 
@@ -44,7 +54,7 @@ class Home extends Component {
                         <svg className="icon" aria-hidden="true">
                             <use xlinkHref="#iconjiqiren"></use>
                         </svg>
-                        <font>维修</font>
+                        <font>评估</font>
                     </span>
                     <span>
                         <svg className="icon" aria-hidden="true">
@@ -56,13 +66,13 @@ class Home extends Component {
                         <svg className="icon" aria-hidden="true">
                             <use xlinkHref="#iconxingbiao"></use>
                         </svg>
-                        <font>换新</font>
+                        <font>收藏</font>
                     </span>
                     <span>
                         <svg className="icon" aria-hidden="true">
                             <use xlinkHref="#iconguanlibaogao"></use>
                         </svg>
-                        <font>刻字</font>
+                        <font>趋势</font>
                     </span>
                     <span>
                         <svg className="icon" >
@@ -78,29 +88,29 @@ class Home extends Component {
                         <a href="/">
                             <span
                                 className="adaptive-img"
-                                style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                style={{ backgroundImage: `url(${require("../../assets/images/linshi/zhibojian.jpg")})` }}
                             >
 
                             </span>
-                            <font>热销</font>
+                            <font>直播间 一 物品拍卖中</font>
                         </a>
                     </div>
                     <div className="home__func__right">
                         <a href="/">
                             <span
                                 className="adaptive-img"
-                                style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                style={{ backgroundImage: `url(${require("../../assets/images/linshi/jingping.jpg")})` }}
                             >
                             </span>
-                            <font>热销</font>
+                            <font>精选哦！</font>
                         </a>
                         <a href="/">
                             <span
                                 className="adaptive-img"
-                                style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                style={{ backgroundImage: `url(${require("../../assets/images/linshi/jianlouwang.jpg")})` }}
                             >
                             </span>
-                            <font>热销</font>
+                            <font>捡漏吧！</font>
                         </a>
                     </div>
                 </div>
@@ -113,7 +123,7 @@ class Home extends Component {
                             <li>
                                 <span
                                     className="adaptive-img"
-                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/tuijian01.jpg")})` }}
                                 >
                                 </span>
                                 <font>热销</font>
@@ -121,7 +131,7 @@ class Home extends Component {
                             <li>
                                 <span
                                     className="adaptive-img"
-                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/tuijian02.jpg")})` }}
                                 >
                                 </span>
                                 <font>热销</font>
@@ -129,7 +139,7 @@ class Home extends Component {
                             <li>
                                 <span
                                     className="adaptive-img"
-                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/tuijian03.jpg")})` }}
                                 >
                                 </span>
                                 <font>热销</font>
@@ -137,7 +147,7 @@ class Home extends Component {
                             <li>
                                 <span
                                     className="adaptive-img"
-                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/tuijian01.jpg")})` }}
                                 >
                                 </span>
                                 <font>热销</font>
@@ -145,7 +155,7 @@ class Home extends Component {
                             <li>
                                 <span
                                     className="adaptive-img"
-                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/home_carousel_01.jpg")})` }}
+                                    style={{ backgroundImage: `url(${require("../../assets/images/linshi/tuijian02.jpg")})` }}
                                 >
                                 </span>
                                 <font>热销</font>
@@ -157,8 +167,10 @@ class Home extends Component {
                 {/* 全部商品 */}
                 <div className="home__all">
                     <h4>全部商品</h4>
-                    <NppList options={ this.state.listData } />
+                    <NppList options={this.state.listData} />
                 </div>
+
+                <NppFooter></NppFooter>
             </div>
         )
     }
